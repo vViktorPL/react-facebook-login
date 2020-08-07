@@ -47,18 +47,25 @@ export interface ReactFacebookFailureResponse {
 }
 
 export interface ReactFacebookLoginInfo {
-  id: string;
-  accessToken: string;
-  name?: string;
+  first_name: string;
+  last_name: string;
   email?: string;
   picture?: {
     data: {
-      height?: number,
-      is_silhouette?: boolean,
-      url?: string,
-      width?: number,
-    },
-  };
+      height?: number;
+      is_silhouette?: boolean;
+      url?: string;
+      width?: number;
+    }
+  },
+  birthday: string;
+  id: string;
+  "accessToken": string;
+  "userID": string;
+  "expiresIn": number;
+  "signedRequest": string;
+  "graphDomain": string;
+  "data_access_expiration_time": number;
 }
 
 export interface ReactFacebookLoginState {
