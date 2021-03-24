@@ -200,6 +200,16 @@ class FacebookLogin extends React.Component {
         return;
       }
 
+      // FIX FOR DESKTOP SAFARI
+      // For some reason Safari probably loses the context that user clicked
+      // the button (which is essential for browser to allow the window popup),
+      // in FB.getLoginStatus callback.
+      if (window.navigator.userAgent.indexOf('Safari') !== -1) {
+        window.FB.login(this.checkLoginState, { scope, return_scopes: returnScopes, auth_type: params.auth_type });
+
+        return;
+      }
+
       window.FB.getLoginStatus(response => {
         if (response.status === 'connected') {
           this.checkLoginState(response);
